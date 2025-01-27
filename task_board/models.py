@@ -35,7 +35,7 @@ class Task(models.Model):
         TaskType, on_delete=models.PROTECT, related_name="tasks"
     )
     assignees = models.ManyToManyField(
-        settings.AUTH.USER.MODEL,
+        settings.AUTH_USER_MODEL,
         related_name="tasks"
     )
     name = models.CharField(max_length=100)
