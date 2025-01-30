@@ -18,7 +18,7 @@ class Worker(AbstractUser):
     )
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ({self.username})"
+        return f"{self.first_name}, {self.last_name}, ({self.username})"
 
 
 # TaskType Model
@@ -40,7 +40,7 @@ class Task(models.Model):
     )
     name = models.CharField(max_length=100)
     description = models.TextField()
-    deadline = models.DateField()
+    deadline = models.DateField(null=True, blank=True)
     is_complete = models.BooleanField(default=False)
 
     class PriorityChoices(models.TextChoices):
