@@ -14,7 +14,10 @@ class Position(models.Model):
 # Worker Model
 class Worker(AbstractUser):
     position = models.ForeignKey(
-        Position, on_delete=models.PROTECT, related_name="workers"
+        Position,
+        on_delete=models.PROTECT, related_name="workers",
+        null=True, blank=True,
+        default=None,
     )
 
     def __str__(self):
