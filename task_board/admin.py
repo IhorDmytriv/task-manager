@@ -24,6 +24,7 @@ class WorkerAdmin(UserAdmin):
             {"fields": ("first_name", "last_name", "position", "email")}
         ),
     )
+    list_filter = UserAdmin.list_filter + ("position", )
 
 
 @admin.register(TaskType)
