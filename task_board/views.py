@@ -5,8 +5,8 @@ from task_board.models import Task
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    task_list = Task.objects.all()
+    tasks = Task.objects.all()
     context = {
-        "task_list": task_list
+        "tasks": tasks
     }
     return render(request, "task_board/index.html", context=context)
