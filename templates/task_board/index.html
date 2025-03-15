@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}Task Manager{% endblock %}
+
+{% block content %}
+<!-- Table name -->
+<div class="d-flex justify-content-between align-items-center">
+  <h2>Tasks List</h2>
+  <a href="#" class="btn-circle" data-toggle="tooltip" title="Create New Task">
+    <i class="fas fa-plus"></i>
+  </a>
+</div>
+<!-- Table name -->
+
+<table class="table text-white mb-0 table-custom">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Type</th>
+      <th scope="col">Deadline</th>
+      <th scope="col" class="text-center">Priority</th>
+      <th scope="col" class="text-center">Status</th>
+      <th scope="col" class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+      <tr class="font-weight-normal">
+
+        <!-- Task name -->
+        <td class="align-middle">{{ task.name }}</td>
+        <!-- Task name -->
+
+        <!-- Task Type -->
+        <td class="align-middle">{{ task.task_type }}</td>
+        <!-- Task Type -->
+
+        <!-- Task Deadline -->
+        <td class="align-middle">
+          {{ task.deadline }}
+          <br>
+          {% if not task.is_complete %}
+            <span class="text-muted">({{ task.deadline|time_until }})</span>
+          {% endif %}
+        </td>
+        <!-- Task Deadline -->
+
+        <!-- Task Priority -->
+        <td class="align-middle text-center">
+          <span class="mb-0">
+            {% if task.priority == "Low" %}
+              <i class="fas fa-circle text-success priority-icon"></i>
+            {% elif task.priority == "Medium" %}
+              <i class="fas fa-circle text-warning priority-icon"></i>
+            {% elif task.priority == "High" %}
+              <i class="fas fa-circle text-danger priority-icon"></i>
+            {% endif %}
+          </span>
+        </td>
+        <!-- Task Priority -->
+
+        <!-- Task Status -->
+        <td class="align-middle text-center">
+          {% if task.is_complete %}
+            <span class="text-success font-weight-bold">Completed!</span>
+          {% else %}
+            <span class="text-warning font-weight-bold">Pending...</span>
+          {% endif %}
+        </td>
+        <!-- Task Status -->
+
+        <!-- Task Actions -->
+        <td class="align-middle text-center">
+          {% if task.is_complete %}
+            <a href="#" class="px-2" data-toggle="tooltip" title="Pending">
+              <i class="fas fa-times-circle fa-lg text-danger"></i>
+            </a>
+          {% else %}
+            <a href="#" class="px-2" data-toggle="tooltip" title="Completed">
+              <i class="fas fa-check-circle fa-lg text-success"></i>
+            </a>
+          {% endif %}
+          <a href="#" class="px-2" data-toggle="tooltip" title="Edit">
+            <i class="fas fa-pen text-warning"></i>
+          </a>
+          <a href="#" class="px-2" data-toggle="tooltip" title="Remove">
+            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+          </a>
+        </td>
+        <!-- Task Actions -->
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6" class="text-center text-muted display-4">No tasks available yet.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
