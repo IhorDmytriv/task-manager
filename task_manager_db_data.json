@@ -41,6 +41,7 @@
       "username": "john_doe",
       "first_name": "John",
       "last_name": "Doe",
+      "email": "john.doe@example.com",
       "password": "password123",
       "position": 1
     }
@@ -51,6 +52,7 @@
       "username": "jane_smith",
       "first_name": "Jane",
       "last_name": "Smith",
+      "email": "jane.smith@example.com",
       "password": "password123",
       "position": 2
     }
@@ -61,6 +63,7 @@
       "username": "paul_brown",
       "first_name": "Paul",
       "last_name": "Brown",
+      "email": "paul.brown@example.com",
       "password": "password123",
       "position": 3
     }
@@ -71,6 +74,7 @@
       "username": "lucy_adams",
       "first_name": "Lucy",
       "last_name": "Adams",
+      "email": "lucy.adams@example.com",
       "password": "password123",
       "position": 4
     }
@@ -81,6 +85,7 @@
       "username": "michael_james",
       "first_name": "Michael",
       "last_name": "James",
+      "email": "michael.james@example.com",
       "password": "password123",
       "position": 5
     }
@@ -91,6 +96,7 @@
       "username": "emma_wilson",
       "first_name": "Emma",
       "last_name": "Wilson",
+      "email": "emma.wilson@example.com",
       "password": "password123",
       "position": 6
     }
@@ -101,6 +107,7 @@
       "username": "luke_scott",
       "first_name": "Luke",
       "last_name": "Scott",
+      "email": "luke.scott@example.com",
       "password": "password123",
       "position": 1
     }
@@ -111,6 +118,7 @@
       "username": "eva_lee",
       "first_name": "Eva",
       "last_name": "Lee",
+      "email": "eva.lee@example.com",
       "password": "password123",
       "position": 2
     }

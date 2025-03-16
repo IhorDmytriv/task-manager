@@ -2,8 +2,9 @@ from datetime import datetime
 
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
+from django.views.generic import ListView
 
-from task_board.models import Task
+from task_board.models import Task, Worker
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -14,3 +15,8 @@ def index(request: HttpRequest) -> HttpResponse:
         "current_year": current_year,
     }
     return render(request, "task_board/index.html", context=context)
+
+
+class WorkerListView(ListView):
+    model = Worker
+    queryset = Worker.objects.select_related("position")
