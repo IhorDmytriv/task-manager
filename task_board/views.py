@@ -7,7 +7,7 @@ from task_board.models import Task
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    tasks = Task.objects.all()
+    tasks = Task.objects.select_related("task_type")
     current_year = datetime.now().year
     context = {
         "tasks": tasks,
