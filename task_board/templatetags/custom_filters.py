@@ -8,8 +8,6 @@ register = template.Library()
 
 @register.filter
 def time_until(deadline: datetime) -> str:
-    if not deadline:
-        return "No deadline"
 
     delta = (deadline - timezone.now().date()).days
 

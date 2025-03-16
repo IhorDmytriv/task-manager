@@ -38,10 +38,14 @@
 
         <!-- Task Deadline -->
         <td class="align-middle">
-          {{ task.deadline }}
-          <br>
-          {% if not task.is_complete %}
-            <span class="text-muted">({{ task.deadline|time_until }})</span>
+          {% if task.task_deadline %}
+            {{ task.deadline }}
+            <br>
+            {% if not task.is_complete %}
+              <span class="text-muted">({{ task.deadline|time_until }})</span>
+            {% endif %}
+          {% else %}
+            No deadline
           {% endif %}
         </td>
         <!-- Task Deadline -->
