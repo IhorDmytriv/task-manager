@@ -24,6 +24,9 @@ class Worker(AbstractUser):
     def __str__(self):
         return f"{self.first_name}, {self.last_name}, ({self.username})"
 
+    def get_absolute_url(self):
+        return reverse("task_board:worker-detail", kwargs={"pk": self.id})
+
 
 # TaskType Model
 class TaskType(models.Model):

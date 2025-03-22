@@ -27,3 +27,10 @@ class TaskDetailView(DetailView):
 class WorkerListView(ListView):
     model = Worker
     queryset = Worker.objects.select_related("position")
+
+
+class WorkerDetailView(DetailView):
+    model = Worker
+    queryset = Worker.objects.select_related(
+        "position"
+    ).prefetch_related("tasks__task_type")
