@@ -1,15 +1,14 @@
-.card {
+.card-profile {
     margin-bottom: 24px;
-    box-shadow: 0 2px 3px #e4e8f0;
-}
-.card {
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
+    border-radius: 15px;
 }
+
 .avatar-md {
     height: 4rem;
     width: 4rem;

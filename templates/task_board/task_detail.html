@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Task ({{task.name}}){% endblock %}
+{% block title %}{{task.name}}{% endblock %}
 
 {% block content %}
 <!-- Table name -->
 <div class="d-flex position-relative justify-content-center align-items-center">
-  <a href="{% url 'task_board:index' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Add New Worker">
+  <a href="{% url 'task_board:index' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task list">
     <i class="fas fa-arrow-left"></i>
   </a>
-  <h2 class="text-center w-100">Task: {{ task.name }}</h2>
+  <h2 class="text-center w-100">Task Detail Info</h2>
   <div class="position-absolute" style="right: 0;">
     <a href="#" class="px-2 fa-lg" data-toggle="tooltip" title="Edit">
       <i class="fas fa-pen text-warning"></i>
@@ -23,7 +23,7 @@
   <div class="col-lg-6 d-flex align-items-stretch">
     <div class="card mb-4 bg-dark text-white w-100">
       <div class="card-header h3 text-center">
-        Description
+        {{ task.name }}
       </div>
       <div class="card-body h4">
         {{ task.description }}
@@ -108,7 +108,7 @@
     </div>
   </div>
 </div>
-
+<hr class="mt-0">
 <table class="table text-white mb-0 table-custom">
   <thead>
     <tr>
@@ -125,7 +125,7 @@
 
         <!-- Worker name -->
         <th class="align- text-center">
-          <span class="ms-2">{{ worker.first_name }} {{worker.last_name }}</span>
+          <a class="ms-2" href="{{ worker.get_absolute_url }}" title="Worker">{{ worker.first_name }} {{ worker.last_name }}</a>
         </th>
 
         <!-- Worker username -->
@@ -149,7 +149,7 @@
       </tr>
     {% empty %}
       <tr>
-        <td colspan="6" class="text-center text-muted display-4">The task don't have workers yet.</td>
+        <td colspan="6" class="text-center text-muted display-4">The task doesn't have workers yet.</td>
       </tr>
     {% endfor %}
   </tbody>

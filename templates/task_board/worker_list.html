@@ -12,7 +12,7 @@
 {% block content %}
 <!-- Table name -->
   <div class="d-flex position-relative justify-content-center align-items-center">
-    <h2 class="text-center w-100">Workers List</h2>
+    <h2 class="text-center w-100">Worker List</h2>
     <a href="#" class="btn-circle position-absolute" style="right: 0;" data-toggle="tooltip" title="Add New Worker">
       <i class="fas fa-plus"></i>
     </a>
@@ -21,10 +21,10 @@
     <div class="row">
       {% for worker in worker_list %}
         <div class="col-xl-4 col-sm-6">
-          <div class="card bg-dark text-white">
+          <div class="card-profile bg-dark text-white">
             <div class="card-body">
               <div class="d-flex align-items-center">
-                <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md rounded-circle img-thumbnail" /></div>
+                <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Picture" class="avatar-md rounded-circle img-thumbnail" /></div>
                 <div class="flex-1 ms-3">
                   <h5 class="font-size-16 mb-1"><a href="#">{{ worker.first_name }} {{ worker.last_name }}</a></h5>
                   <span class="badge badge-soft-success mb-0">{{ worker.position }}</span>
