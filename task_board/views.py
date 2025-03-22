@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from task_board.models import Task, Worker
 
@@ -15,6 +15,13 @@ def index(request: HttpRequest) -> HttpResponse:
         "current_year": current_year,
     }
     return render(request, "task_board/index.html", context=context)
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    queryset = Task.objects.select_related(
+        "task_type"
+    ).prefetch_related("assignees__position")
 
 
 class WorkerListView(ListView):

@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 # Position Model
@@ -59,3 +60,6 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.get_priority_display()})"
+
+    def get_absolute_url(self):
+        return reverse("task_board:task-detail", kwargs={"pk": self.id})

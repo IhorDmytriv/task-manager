@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block title %}Task ({{task.name}}){% endblock %}
+
+{% block content %}
+<!-- Table name -->
+<div class="d-flex position-relative justify-content-center align-items-center">
+  <a href="{% url 'task_board:index' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Add New Worker">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+  <h2 class="text-center w-100">Task: {{ task.name }}</h2>
+  <div class="position-absolute" style="right: 0;">
+    <a href="#" class="px-2 fa-lg" data-toggle="tooltip" title="Edit">
+      <i class="fas fa-pen text-warning"></i>
+    </a>
+    <a href="#" class="px-2 fa-lg" data-toggle="tooltip" title="Remove">
+      <i class="fas fa-trash-alt fa-lg text-danger"></i>
+    </a>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6 d-flex align-items-stretch">
+    <div class="card mb-4 bg-dark text-white w-100">
+      <div class="card-header h3 text-center">
+        Description
+      </div>
+      <div class="card-body h4">
+        {{ task.description }}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="row">
+
+      <!-- Task Type -->
+      <div class="col-md-6 col-xl-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2 bg-dark text-white">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                  Task Type
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ task.task_type }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="col-md-6 col-xl-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2 bg-dark text-white">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                  Status
+                </div>
+                {% if task.is_complete %}
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">Complete!</div>
+                {% else %}
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">Pending...</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Priority -->
+      <div class="col-md-6 col-xl-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2 bg-dark text-white">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                  Priority
+                </div>
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ task.priority }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DeadLine -->
+      <div class="col-md-6 col-xl-6 mb-4 ">
+        <div class="card border-left-primary shadow h-100 py-2 bg-dark text-white">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  DeadLine
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ task.deadline }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table text-white mb-0 table-custom">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">Worker</th>
+      <th scope="col" class="text-center">Username</th>
+      <th scope="col" class="text-center">Email</th>
+      <th scope="col" class="text-center">Position</th>
+      <th scope="col" class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for worker in task.assignees.all %}
+      <tr class="font-weight-normal">
+
+        <!-- Worker name -->
+        <th class="align- text-center">
+          <span class="ms-2">{{ worker.first_name }} {{worker.last_name }}</span>
+        </th>
+
+        <!-- Worker username -->
+        <td class="align-middle text-center">{{ worker.username }}</td>
+
+        <!-- Worker Email -->
+        <td class="align-middle text-center">{{ worker.email }}</td>
+
+        <!-- Worker Position -->
+        <td class="align-middle text-center">{{ worker.position }}</td>
+
+        <!-- Worker Actions -->
+        <td class="align-middle text-center">
+          <a href="#" class="px-2" data-toggle="tooltip" title="Edit">
+            <i class="fas fa-pen text-warning"></i>
+          </a>
+          <a href="#" class="px-2" data-toggle="tooltip" title="Remove">
+            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+          </a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6" class="text-center text-muted display-4">The task don't have workers yet.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

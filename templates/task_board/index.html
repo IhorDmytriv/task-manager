@@ -5,9 +5,9 @@
 
 {% block content %}
 <!-- Table name -->
-<div class="d-flex justify-content-between align-items-center">
-  <h2>Tasks List</h2>
-  <a href="#" class="btn-circle" data-toggle="tooltip" title="Create New Task">
+<div class="d-flex position-relative justify-content-center align-items-center">
+  <h2 class="text-center w-100"> Tasks List</h2>
+  <a href="#" class="btn-circle position-absolute" style="right: 0;" data-toggle="tooltip" title="Create New Task">
     <i class="fas fa-plus"></i>
   </a>
 </div>
@@ -29,12 +29,12 @@
       <tr class="font-weight-normal">
 
         <!-- Task name -->
-        <td class="align-middle">{{ task.name }}</td>
-        <!-- Task name -->
+        <td class="align-middle">
+          <a href="{{ task.get_absolute_url }}" title="Task">{{ task.name }}</a>
+        </td>
 
         <!-- Task Type -->
         <td class="align-middle">{{ task.task_type }}</td>
-        <!-- Task Type -->
 
         <!-- Task Deadline -->
         <td class="align-middle">
@@ -48,7 +48,6 @@
             No deadline
           {% endif %}
         </td>
-        <!-- Task Deadline -->
 
         <!-- Task Priority -->
         <td class="align-middle text-center">
@@ -62,7 +61,6 @@
             {% endif %}
           </span>
         </td>
-        <!-- Task Priority -->
 
         <!-- Task Status -->
         <td class="align-middle text-center">
@@ -72,7 +70,6 @@
             <span class="text-warning font-weight-bold">Pending...</span>
           {% endif %}
         </td>
-        <!-- Task Status -->
 
         <!-- Task Actions -->
         <td class="align-middle text-center">
@@ -92,7 +89,6 @@
             <i class="fas fa-trash-alt fa-lg text-danger"></i>
           </a>
         </td>
-        <!-- Task Actions -->
       </tr>
     {% empty %}
       <tr>
