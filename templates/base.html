@@ -14,11 +14,14 @@
   <link rel="icon" href="{% static 'images/task_manager_icon.png' %}" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
+  {% block head %}
+  {% endblock %}
+
 </head>
 <body>
   {% include "includes/navbar.html" %}
 
-  <section class="min-vh-100 gradient-custom-2">
+  <section class="min-vh-100 gradient-custom-2 wrapper">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-14">

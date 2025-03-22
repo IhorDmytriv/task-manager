@@ -1,7 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #f8f9fa;
     padding-top: 50px;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    flex: 1;
 }
 
 h1 {
@@ -104,8 +118,8 @@ h1 {
 }
 
 footer {
-    position: absolute;
-    bottom: -100px;
+    text-align: center;
+    padding: 10px;
     width: 100%;
+    margin-top: auto;
 }
-
