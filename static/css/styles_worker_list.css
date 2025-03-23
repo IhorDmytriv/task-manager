@@ -1,5 +1,5 @@
 .card-profile {
-    margin-bottom: 24px;
+    margin-top: 24px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -43,9 +43,7 @@ a {
     color: #63ad6f !important;
     background-color: rgba(99,173,111,.1);
 }
-.mb-0 {
-    margin-bottom: 0!important;
-}
+
 .badge {
     display: inline-block;
     padding: 0.25em 0.6em;

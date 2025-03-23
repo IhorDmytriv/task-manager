@@ -27,6 +27,7 @@ class TaskDetailView(DetailView):
 class WorkerListView(ListView):
     model = Worker
     queryset = Worker.objects.select_related("position")
+    paginate_by = 6
 
 
 class WorkerDetailView(DetailView):
