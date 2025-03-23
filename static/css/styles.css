@@ -117,6 +117,17 @@ h1 {
     background-color: #011d53;
 }
 
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item {
+    margin: 0 3px;
+}
+
 footer {
     text-align: center;
     padding: 10px;
