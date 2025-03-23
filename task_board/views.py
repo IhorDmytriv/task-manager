@@ -45,3 +45,16 @@ class WorkerDetailView(DetailView):
     queryset = Worker.objects.select_related(
         "position"
     ).prefetch_related("tasks__task_type")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tasks = self.object.tasks.all()
+        paginator = Paginator(tasks, 6)
+
+        page = self.request.GET.get("page")
+        page_obj = paginator.get_page(page)
+        context["page_obj"] = page_obj
+        context["paginator"] = paginator
+        context["is_paginated"] = page_obj.has_other_pages()
+
+        return context
