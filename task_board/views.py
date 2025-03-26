@@ -17,12 +17,16 @@ def index(request: HttpRequest) -> HttpResponse:
     page = request.GET.get("page")
     page_obj = paginator.get_page(page)
 
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
+
     context = {
         "tasks": tasks,
         "current_year": current_year,
         "page_obj": page_obj,
         "is_paginated": page_obj.has_other_pages(),
         "paginator": paginator,
+        "num_visits": num_visits + 1,
     }
     return render(request, "task_board/index.html", context=context)
 

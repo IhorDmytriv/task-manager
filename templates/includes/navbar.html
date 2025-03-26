@@ -5,6 +5,11 @@
       <img class="navbar-img" src="{% static "images/task_manager_icon.png" %}"
                 alt="Check" width="40">
       <a class="navbar-brand" href="{% url 'task_board:index' %}">Task Manager</a>
+      {% if num_visits %}
+        <p class="text-center mb-0 mx-auto small text-white">
+          👁️ You have visited this page: <strong>{{ num_visits }}</strong> time{{ num_visits|pluralize }}
+        </p>
+      {% endif %}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
