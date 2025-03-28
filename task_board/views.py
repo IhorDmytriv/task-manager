@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
@@ -8,6 +10,7 @@ from django.views.generic import ListView, DetailView
 from task_board.models import Task, Worker
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     tasks = Task.objects.select_related("task_type")
 
@@ -31,20 +34,20 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "task_board/index.html", context=context)
 
 
-class TaskDetailView(DetailView):
+class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     queryset = Task.objects.select_related(
         "task_type"
     ).prefetch_related("assignees__position")
 
 
-class WorkerListView(ListView):
+class WorkerListView(LoginRequiredMixin, ListView):
     model = Worker
     queryset = Worker.objects.select_related("position")
     paginate_by = 6
 
 
-class WorkerDetailView(DetailView):
+class WorkerDetailView(LoginRequiredMixin, DetailView):
     model = Worker
     queryset = Worker.objects.select_related(
         "position"
