@@ -40,6 +40,13 @@ h1 {
     margin-right: 10px;
 }
 
+.divider {
+  width: 2px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+}
+
 .gradient-custom-2 {
   /* fallback for old browsers */
     background: #7e40f6;
@@ -133,4 +140,15 @@ footer {
     padding: 10px;
     width: 100%;
     margin-top: auto;
+}
+
+.user-badge {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  display: inline-flex;
+  align-items: center;
 }
