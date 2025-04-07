@@ -94,3 +94,8 @@ class TaskTypeCreateView(LoginRequiredMixin, CreateView):
 class PositionListView(LoginRequiredMixin, ListView):
     model = Position
     paginate_by = 10
+
+class PositionCreateView(LoginRequiredMixin, CreateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("task_board:position-list")
