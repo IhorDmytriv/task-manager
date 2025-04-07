@@ -85,6 +85,12 @@ class TaskTypeListView(LoginRequiredMixin, ListView):
     context_object_name = "task_type_list"
     paginate_by = 10
 
+class TaskTypeCreateView(LoginRequiredMixin, CreateView):
+    model = TaskType
+    fields = "__all__"
+    template_name = "task_board/task_type_form.html"
+    success_url = reverse_lazy("task_board:task-type-list")
+
 class PositionListView(LoginRequiredMixin, ListView):
     model = Position
     paginate_by = 10

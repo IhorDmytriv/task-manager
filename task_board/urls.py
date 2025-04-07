@@ -1,11 +1,12 @@
 from django.urls import path
 from task_board.views import (
     index,
-    WorkerListView,
     TaskDetailView,
-    WorkerDetailView,
     TaskCreateView,
+    WorkerListView,
+    WorkerDetailView,
     TaskTypeListView,
+    TaskTypeCreateView,
     PositionListView,
 )
 
@@ -20,6 +21,7 @@ urlpatterns = [
         name="worker-detail"
     ),
     path("task_types", TaskTypeListView.as_view(), name="task-type-list"),
+    path("task_types/create/", TaskTypeCreateView.as_view(), name="task-type-create"),
     path("positions", PositionListView.as_view(), name="position-list"),
 ]
 
