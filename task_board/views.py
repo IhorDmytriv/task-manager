@@ -5,8 +5,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 
+from task_board.forms import TaskForm
 from task_board.models import Task, Worker
 
 
@@ -36,9 +38,18 @@ def index(request: HttpRequest) -> HttpResponse:
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
-    queryset = Task.objects.select_related(
-        "task_type"
-    ).prefetch_related("assignees__position")
+    queryset = (
+        Task.objects
+        .select_related("task_type")
+        .prefetch_related("assignees__position")
+    )
+
+
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("task_board:index")
+    template_name = "task_board/task_form.html"
 
 
 class WorkerListView(LoginRequiredMixin, ListView):
@@ -49,9 +60,11 @@ class WorkerListView(LoginRequiredMixin, ListView):
 
 class WorkerDetailView(LoginRequiredMixin, DetailView):
     model = Worker
-    queryset = Worker.objects.select_related(
-        "position"
-    ).prefetch_related("tasks__task_type")
+    queryset = (
+        Worker.objects
+        .select_related("position")
+        .prefetch_related("tasks__task_type")
+    )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

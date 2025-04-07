@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load custom_filters %}
+
+{% block title %}Task Manager{% endblock %}
+
+{% block content %}
+  <!-- Table name -->
+  <div class="d-flex position-relative justify-content-center align-items-center mb-3">
+    <a href="{% url 'task_board:index' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task list">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <h2 class="text-center w-100">Task Create</h2>
+  </div>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
