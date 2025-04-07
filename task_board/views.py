@@ -83,6 +83,8 @@ class TaskTypeListView(LoginRequiredMixin, ListView):
     model = TaskType
     template_name = "task_board/task_type_list.html"
     context_object_name = "task_type_list"
+    paginate_by = 10
 
 class PositionListView(LoginRequiredMixin, ListView):
     model = Position
+    paginate_by = 10
