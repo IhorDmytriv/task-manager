@@ -5,6 +5,8 @@ from task_board.views import (
     TaskDetailView,
     WorkerDetailView,
     TaskCreateView,
+    TaskTypeListView,
+    PositionListView,
 )
 
 urlpatterns = [
@@ -17,6 +19,8 @@ urlpatterns = [
         WorkerDetailView.as_view(),
         name="worker-detail"
     ),
+    path("task_types", TaskTypeListView.as_view(), name="task-type-list"),
+    path("positions", PositionListView.as_view(), name="position-list"),
 ]
 
 app_name = "task_board"

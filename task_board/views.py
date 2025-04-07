@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
 from task_board.forms import TaskForm
-from task_board.models import Task, Worker
+from task_board.models import Task, Worker, TaskType, Position
 
 
 @login_required
@@ -78,3 +78,11 @@ class WorkerDetailView(LoginRequiredMixin, DetailView):
         context["is_paginated"] = page_obj.has_other_pages()
 
         return context
+
+class TaskTypeListView(LoginRequiredMixin, ListView):
+    model = TaskType
+    template_name = "task_board/task_type_list.html"
+    context_object_name = "task_type_list"
+
+class PositionListView(LoginRequiredMixin, ListView):
+    model = Position
