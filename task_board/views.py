@@ -8,7 +8,7 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
-from task_board.forms import TaskForm
+from task_board.forms import TaskForm, WorkerForm
 from task_board.models import Task, Worker, TaskType, Position
 
 
@@ -79,11 +79,20 @@ class WorkerDetailView(LoginRequiredMixin, DetailView):
 
         return context
 
+
+class WorkerCreateView(LoginRequiredMixin, CreateView):
+    model = Worker
+    form_class = WorkerForm
+    template_name = "task_board/worker_form.html"
+    success_url = reverse_lazy("task_board:worker-list")
+
+
 class TaskTypeListView(LoginRequiredMixin, ListView):
     model = TaskType
     template_name = "task_board/task_type_list.html"
     context_object_name = "task_type_list"
     paginate_by = 10
+
 
 class TaskTypeCreateView(LoginRequiredMixin, CreateView):
     model = TaskType
@@ -91,9 +100,11 @@ class TaskTypeCreateView(LoginRequiredMixin, CreateView):
     template_name = "task_board/task_type_form.html"
     success_url = reverse_lazy("task_board:task-type-list")
 
+
 class PositionListView(LoginRequiredMixin, ListView):
     model = Position
     paginate_by = 10
+
 
 class PositionCreateView(LoginRequiredMixin, CreateView):
     model = Position
