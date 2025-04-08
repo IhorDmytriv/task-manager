@@ -6,7 +6,7 @@
 <!-- Table name -->
 <div class="d-flex position-relative justify-content-center align-items-center">
   <h2 class="text-center w-100">Position List</h2>
-  <a href="#" class="btn-circle position-absolute" style="right: 0;" data-toggle="tooltip" title="Create New Position">
+  <a href="{% url 'task_board:position-create' %}" class="btn-circle position-absolute" style="right: 0;" data-toggle="tooltip" title="Create New Position">
     <i class="fas fa-plus"></i>
   </a>
 </div>
@@ -29,7 +29,7 @@
 
         <!-- Task Actions -->
         <td class="align-middle text-right">
-          <a href="#" class="px-2" data-toggle="tooltip" title="Edit">
+          <a href="{% url 'task_board:position-update' pk=position.id %}" class="px-2" data-toggle="tooltip" title="Edit">
             <i class="fas fa-pen text-warning"></i>
           </a>
           <a href="#" class="px-2" data-toggle="tooltip" title="Remove">

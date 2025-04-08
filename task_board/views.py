@@ -7,6 +7,12 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+)
 
 from task_board.forms import TaskForm, WorkerForm
 from task_board.models import Task, Worker, TaskType, Position
@@ -114,6 +120,12 @@ class PositionListView(LoginRequiredMixin, ListView):
 
 
 class PositionCreateView(LoginRequiredMixin, CreateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("task_board:position-list")
+
+
+class PositionUpdateView(LoginRequiredMixin, UpdateView):
     model = Position
     fields = "__all__"
     success_url = reverse_lazy("task_board:position-list")

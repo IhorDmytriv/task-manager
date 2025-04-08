@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}Position Create{% endblock %}
+{% block title %}Position {{ object|yesno:"Update,Create" }}{% endblock %}
 
 {% block content %}
   <!-- Table name -->
@@ -9,7 +9,7 @@
     <a href="{% url 'task_board:position-list' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task list">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <h2 class="text-center w-100">Position Create</h2>
+    <h2 class="text-center w-100">Position {{ object|yesno:"Update,Create" }}</h2>
   </div>
   <form method="post" novalidate>
     {% csrf_token %}

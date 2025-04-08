@@ -11,6 +11,7 @@ from task_board.views import (
     TaskTypeUpdateView,
     PositionListView,
     PositionCreateView,
+    PositionUpdateView,
 )
 
 urlpatterns = [
@@ -41,6 +42,11 @@ urlpatterns = [
         PositionCreateView.as_view(),
         name="position-create"
     ),
+    path(
+        "positions/<int:pk>/update/",
+        PositionUpdateView.as_view(),
+        name="position-update"
+    )
 ]
 
 app_name = "task_board"
