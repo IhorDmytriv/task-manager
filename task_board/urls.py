@@ -8,6 +8,7 @@ from task_board.views import (
     WorkerCreateView,
     TaskTypeListView,
     TaskTypeCreateView,
+    TaskTypeUpdateView,
     PositionListView,
     PositionCreateView,
 )
@@ -28,6 +29,11 @@ urlpatterns = [
         "task_types/create/",
         TaskTypeCreateView.as_view(),
         name="task-type-create"
+    ),
+    path(
+        "task_types/<int:pk>/update/",
+        TaskTypeUpdateView.as_view(),
+        name="task-type-update"
     ),
     path("positions", PositionListView.as_view(), name="position-list"),
     path(
