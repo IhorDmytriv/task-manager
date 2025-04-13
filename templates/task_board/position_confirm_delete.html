@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Position Delete{% endblock %}
+
+{% block content %}
+  <!-- Table name -->
+  <div class="d-flex position-relative justify-content-center align-items-center mb-3">
+    <a href="{% url 'task_board:position-list' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task list">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <h2 class="text-center w-100">Position Delete</h2>
+  </div>
+  <div class="card border-left-warning shadow h-100 py-2 bg-dark text-white text-center">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+            <h5 class="text-danger">⚠️ Warning: Deleting ({{ position.name }}) position will also delete all related workers.</h5>
+          </div>
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

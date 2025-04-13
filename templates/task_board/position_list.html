@@ -32,7 +32,7 @@
           <a href="{% url 'task_board:position-update' pk=position.id %}" class="px-2" data-toggle="tooltip" title="Edit">
             <i class="fas fa-pen text-warning"></i>
           </a>
-          <a href="#" class="px-2" data-toggle="tooltip" title="Remove">
+          <a href="{% url 'task_board:position-delete' pk=position.id %}" class="px-2" data-toggle="tooltip" title="Remove">
             <i class="fas fa-trash-alt fa-lg text-danger"></i>
           </a>
         </td>

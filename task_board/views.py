@@ -135,3 +135,9 @@ class PositionUpdateView(LoginRequiredMixin, UpdateView):
     model = Position
     fields = "__all__"
     success_url = reverse_lazy("task_board:position-list")
+
+
+class PositionDeleteView(LoginRequiredMixin, DeleteView):
+    model = Position
+    template_name = "task_board/position_confirm_delete.html"
+    success_url = reverse_lazy("task_board:position-list")
