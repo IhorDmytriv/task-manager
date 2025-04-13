@@ -100,6 +100,12 @@ class WorkerUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("task_board:worker-list")
 
 
+class WorkerDeleteView(LoginRequiredMixin, DeleteView):
+    model = Worker
+    template_name = "task_board/worker_confirm_delete.html"
+    success_url = reverse_lazy("task_board:worker-list")
+
+
 class TaskTypeListView(LoginRequiredMixin, ListView):
     model = TaskType
     template_name = "task_board/task_type_list.html"
