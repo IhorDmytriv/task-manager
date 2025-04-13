@@ -14,7 +14,7 @@ from django.views.generic import (
     DeleteView
 )
 
-from task_board.forms import TaskForm, WorkerForm
+from task_board.forms import TaskForm, WorkerCreateForm, WorkerUpdateForm
 from task_board.models import Task, Worker, TaskType, Position
 
 
@@ -88,7 +88,14 @@ class WorkerDetailView(LoginRequiredMixin, DetailView):
 
 class WorkerCreateView(LoginRequiredMixin, CreateView):
     model = Worker
-    form_class = WorkerForm
+    form_class = WorkerCreateForm
+    template_name = "task_board/worker_form.html"
+    success_url = reverse_lazy("task_board:worker-list")
+
+
+class WorkerUpdateView(LoginRequiredMixin, UpdateView):
+    model = Worker
+    form_class = WorkerUpdateForm
     template_name = "task_board/worker_form.html"
     success_url = reverse_lazy("task_board:worker-list")
 

@@ -18,7 +18,7 @@
     </a>
     <h2 class="text-center w-100">Worker Detail Info</h2>
     <div class="position-absolute" style="right: 0;">
-      <a href="#" class="px-2 fa-lg" data-toggle="tooltip" title="Edit">
+      <a href="{% url 'task_board:worker-update' pk=worker.id %}" class="px-2 fa-lg" data-toggle="tooltip" title="Edit">
         <i class="fas fa-pen text-warning"></i>
       </a>
       <a href="#" class="px-2 fa-lg" data-toggle="tooltip" title="Remove">

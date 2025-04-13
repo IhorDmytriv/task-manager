@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}Worker Create{% endblock %}
+{% block title %}Worker {{ object|yesno:"Update,Create" }}{% endblock %}
 
 {% block head %}
   {% load static %}
@@ -15,7 +15,7 @@
     <a href="{% url 'task_board:worker-list' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Add New Worker">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <h2 class="text-center w-100">Create Worker</h2>
+    <h2 class="text-center w-100">{{ object|yesno:"Update,Create" }} Worker</h2>
   </div>
   <!-- Profile -->
   <div class="container-xl px-4 mt-4">

@@ -32,7 +32,7 @@ class TaskForm(forms.ModelForm):
         }
 
 
-class WorkerForm(forms.ModelForm):
+class WorkerCreateForm(forms.ModelForm):
     class Meta:
         model = Worker
         fields = [
@@ -45,10 +45,36 @@ class WorkerForm(forms.ModelForm):
         ]
         widgets = {
             "position": forms.Select(
-                attrs={"class": "form-control"}
+                attrs={
+                    "class": "form-control",
+                    "style": "height: auto; min-height: 40px; font-size: 1rem;"
+                }
             ),
             "password": forms.PasswordInput(
                 attrs={"class": "form-control"}
+            ),
+            "email": forms.EmailInput(
+                attrs={"class": "form-control"}
+            )
+        }
+
+
+class WorkerUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Worker
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
+            "position",
+            "username",
+        ]
+        widgets = {
+            "position": forms.Select(
+                attrs={
+                    "class": "form-control",
+                    "style": "height: auto; min-height: 40px; font-size: 1rem;"
+                }
             ),
             "email": forms.EmailInput(
                 attrs={"class": "form-control"}
