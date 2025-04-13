@@ -6,12 +6,12 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView
 )
 
 from task_board.forms import TaskForm, WorkerForm
@@ -111,6 +111,12 @@ class TaskTypeUpdateView(LoginRequiredMixin, UpdateView):
     model = TaskType
     fields = "__all__"
     template_name = "task_board/task_type_form.html"
+    success_url = reverse_lazy("task_board:task-type-list")
+
+
+class TaskTypeDeleteView(LoginRequiredMixin, DeleteView):
+    model = TaskType
+    template_name = "task_board/task_type_confirm_delete.html"
     success_url = reverse_lazy("task_board:task-type-list")
 
 

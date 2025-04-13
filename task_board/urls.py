@@ -9,6 +9,7 @@ from task_board.views import (
     TaskTypeListView,
     TaskTypeCreateView,
     TaskTypeUpdateView,
+    TaskTypeDeleteView,
     PositionListView,
     PositionCreateView,
     PositionUpdateView,
@@ -35,6 +36,11 @@ urlpatterns = [
         "task_types/<int:pk>/update/",
         TaskTypeUpdateView.as_view(),
         name="task-type-update"
+    ),
+    path(
+        "task_types/<int:pk>/delete/",
+        TaskTypeDeleteView.as_view(),
+        name="task-type-delete"
     ),
     path("positions", PositionListView.as_view(), name="position-list"),
     path(
