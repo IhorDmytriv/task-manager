@@ -12,9 +12,15 @@
 {% block content %}
   <!-- Table name -->
   <div class="d-flex position-relative justify-content-center align-items-center">
-    <a href="{% url 'task_board:worker-list' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Add New Worker">
+  {% if object %}
+    <a href="{% url 'task_board:worker-detail' pk=worker.id %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to worker detail page">
       <i class="fas fa-arrow-left"></i>
     </a>
+  {% else %}
+    <a href="{% url 'task_board:worker-list' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to worker list page">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+  {% endif %}
     <h2 class="text-center w-100">{{ object|yesno:"Update,Create" }} Worker</h2>
   </div>
   <!-- Profile -->
