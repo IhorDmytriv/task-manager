@@ -16,7 +16,7 @@ class Position(models.Model):
 class Worker(AbstractUser):
     position = models.ForeignKey(
         Position,
-        on_delete=models.PROTECT, related_name="workers",
+        on_delete=models.CASCADE, related_name="workers",
         null=True, blank=True,
         default=None,
     )
@@ -39,7 +39,7 @@ class TaskType(models.Model):
 # Task Model
 class Task(models.Model):
     task_type = models.ForeignKey(
-        TaskType, on_delete=models.PROTECT, related_name="tasks"
+        TaskType, on_delete=models.CASCADE, related_name="tasks"
     )
     assignees = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
