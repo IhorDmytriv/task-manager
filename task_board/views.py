@@ -58,6 +58,13 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = "task_board/task_form.html"
 
 
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("task_board:index")
+    template_name = "task_board/task_form.html"
+
+
 class WorkerListView(LoginRequiredMixin, ListView):
     model = Worker
     queryset = Worker.objects.select_related("position")

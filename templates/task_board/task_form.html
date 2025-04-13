@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}Task Create{% endblock %}
+{% block title %}Task {{ object|yesno:"Update,Create" }}{% endblock %}
 
 {% block content %}
   <!-- Table name -->
   <div class="d-flex position-relative justify-content-center align-items-center mb-3">
+  {% if object %}
+    <a href="{% url 'task_board:task-detail' pk=task.id %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task detail">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+  {% else %}
     <a href="{% url 'task_board:index' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task list">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <h2 class="text-center w-100">Task Create</h2>
+  {% endif %}
+    <h2 class="text-center w-100">Task {{ object|yesno:"Update,Create" }}</h2>
   </div>
   <form method="post" novalidate>
     {% csrf_token %}
