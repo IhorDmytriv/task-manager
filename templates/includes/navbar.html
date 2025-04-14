@@ -38,7 +38,9 @@
 
           {% if user.is_authenticated %}
             <li class="nav-item d-flex align-items-center">
-              <span class="user-badge">👤 {{ user.username }}</span>
+              <span class="user-badge">
+                👤 <a href={% url 'task_board:worker-detail' pk=user.id %}>{{ user.first_name }} {{ user.last_name }}</a>
+              </span>
               <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn text-danger">Logout</button>
