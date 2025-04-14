@@ -17,14 +17,6 @@
       <i class="fas fa-arrow-left"></i>
     </a>
     <h2 class="text-center w-100">Worker Detail Info</h2>
-    <div class="position-absolute" style="right: 0;">
-      <a href="{% url 'task_board:worker-update' pk=worker.id %}" class="px-2 fa-lg" data-toggle="tooltip" title="Edit">
-        <i class="fas fa-pen text-warning"></i>
-      </a>
-      <a href="{% url 'task_board:worker-delete' pk=worker.id %}" class="px-2 fa-lg" data-toggle="tooltip" title="Remove">
-        <i class="fas fa-trash-alt fa-lg text-danger"></i>
-      </a>
-    </div>
   </div>
   <!-- Profile -->
   <div class="card-profile bg-dark text-white mt-4 pb-4 pt-2">
@@ -36,7 +28,7 @@
             <h4 class="text-primary font-size-20 mt-3 mb-2">{{ worker.first_name }} {{ worker.last_name }}</h4>
             <h5 class="text-muted font-size-13 mb-0">{{ worker.position }}</h5>
           </div>
-        </div><!-- end col -->
+        </div>
         <div class="col-md-9">
           <div class="ms-3">
             <div>
@@ -50,13 +42,13 @@
                   <p class="mb-0 mt-2"><i class="mdi mdi-email font-size-15 align-middle pe-2 text-primary"></i> {{ worker.email }}</p>
                   <p class="mb-0 mt-2"><i class="mdi mdi-google-maps font-size-15 align-middle pe-2 text-primary"></i> France (Paris)</p>
                 </div>
-              </div><!-- end col -->
-            </div><!-- end row -->
+              </div>
+            </div>
           </div>
-        </div><!-- end col -->
-      </div><!-- end row -->
-    </div><!-- end card body -->
-  </div><!-- end card -->
+        </div>
+      </div>
+    </div>
+  </div>
   <hr class="mt-0">
   <table class="table text-white mb-0 table-custom">
     <thead>
