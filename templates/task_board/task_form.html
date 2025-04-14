@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_filters %}
 
 {% block title %}Task {{ object|yesno:"Update,Create" }}{% endblock %}
 
@@ -17,9 +16,5 @@
   {% endif %}
     <h2 class="text-center w-100">Task {{ object|yesno:"Update,Create" }}</h2>
   </div>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  {% include "includes/crispy_form.html" %}
 {% endblock %}

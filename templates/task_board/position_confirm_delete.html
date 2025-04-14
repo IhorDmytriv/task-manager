@@ -17,10 +17,7 @@
           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
             <h5 class="text-danger">⚠️ Warning: Deleting ({{ position.name }}) position will also delete all related workers.</h5>
           </div>
-          <form method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Confirm Delete</button>
-          </form>
+          {% include "includes/delete_form.html" %}
         </div>
       </div>
     </div>
