@@ -32,6 +32,12 @@ class TaskForm(forms.ModelForm):
             "deadline": forms.DateInput(
                 attrs={"type": "date", "class": "form-control"}
             ),
+            "priority": forms.RadioSelect(
+                attrs={
+                    "class": "form-check-input h2",
+                    "style": "transform: scale(1.5);"
+                }
+            ),
         }
 
     def clean_deadline(self):
