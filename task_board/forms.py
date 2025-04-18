@@ -65,3 +65,28 @@ class WorkerCreationForm(UserCreationForm):
                 }
             )
         }
+
+
+class WorkerSearchForm(forms.Form):
+    first_name = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "First name",
+                "class": "mr-2",
+            }
+        ),
+    )
+    last_name = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name",
+                "class": "mr-2",
+            }
+        ),
+    )

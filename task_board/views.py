@@ -14,7 +14,7 @@ from django.views.generic import (
     DeleteView
 )
 
-from task_board.forms import TaskForm, WorkerCreationForm
+from task_board.forms import TaskForm, WorkerCreationForm, WorkerSearchForm
 from task_board.models import Task, Worker, TaskType, Position
 
 
@@ -73,8 +73,32 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
 class WorkerListView(LoginRequiredMixin, ListView):
     model = Worker
-    queryset = Worker.objects.select_related("position")
     paginate_by = 6
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(WorkerListView, self).get_context_data(**kwargs)
+
+        search_fields = ["first_name", "last_name"]
+        initial_data = {
+            field: self.request.GET.get(field, "")
+            for field in search_fields
+        }
+
+        context["search_form"] = WorkerSearchForm(initial=initial_data)
+        return context
+
+    def get_queryset(self):
+        queryset = Worker.objects.select_related("position")
+        filters = {}
+
+        first_name = self.request.GET.get("first_name")
+        last_name = self.request.GET.get("last_name")
+
+        if first_name:
+            filters["first_name__icontains"] = first_name
+        if last_name:
+            filters["last_name__icontains"] = last_name
+        return queryset.filter(**filters)
 
 
 class WorkerDetailView(LoginRequiredMixin, DetailView):
