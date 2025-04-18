@@ -26,7 +26,14 @@
               <div class="d-flex align-items-center">
                 <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Picture" class="avatar-md rounded-circle img-thumbnail" /></div>
                 <div class="flex-1 ms-3">
-                  <h5 class="font-size-16 mb-1"><a href="{{ worker.get_absolute_url }}">{{ worker.first_name }} {{ worker.last_name }}</a></h5>
+                  <h5 class="font-size-16 mb-1">
+                    <a href="{{ worker.get_absolute_url }}">
+                      {{ worker.first_name }} {{ worker.last_name }}
+                      {% if worker == user %}
+                        <span class="text-muted">(you)</span>
+                      {% endif %}
+                    </a>
+                  </h5>
                   <span class="badge badge-soft-success mb-0">{{ worker.position }}</span>
                 </div>
               </div>
