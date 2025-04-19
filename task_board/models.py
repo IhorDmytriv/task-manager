@@ -50,16 +50,13 @@ class Task(models.Model):
     deadline = models.DateField(null=True, blank=True)
     is_complete = models.BooleanField(default=False)
 
-    class PriorityChoices(models.TextChoices):
-        LOW = "Low", "Low Priority"
-        MEDIUM = "Medium", "Medium Priority"
-        HIGH = "High", "High Priority"
+    PRIORITY_CHOICES = [
+        (3, "High Priority"),
+        (2, "Medium Priority"),
+        (1, "Low Priority"),
+    ]
 
-    priority = models.CharField(
-        max_length=10,
-        choices=PriorityChoices,
-        default=PriorityChoices.MEDIUM,
-    )
+    priority = models.IntegerField(choices=PRIORITY_CHOICES, default=2)
 
     def __str__(self):
         return f"{self.name} ({self.get_priority_display()})"
