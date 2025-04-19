@@ -18,7 +18,8 @@ from task_board.forms import (
     TaskForm,
     WorkerCreationForm,
     WorkerSearchForm,
-    TaskSearchForm
+    TaskSearchForm,
+    NameSearchForm
 )
 from task_board.models import Task, Worker, TaskType, Position
 
@@ -144,6 +145,21 @@ class TaskTypeListView(LoginRequiredMixin, ListView):
     template_name = "task_board/task_type_list.html"
     context_object_name = "task_type_list"
     paginate_by = 10
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(TaskTypeListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+        context["search_form"] = NameSearchForm(initial={"name": name})
+        return context
+
+    def get_queryset(self):
+        queryset = super(TaskTypeListView, self).get_queryset()
+
+        name = self.request.GET.get("name", "")
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+        return queryset
 
 
 class TaskTypeCreateView(LoginRequiredMixin, CreateView):
