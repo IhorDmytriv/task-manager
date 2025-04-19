@@ -22,22 +22,27 @@
       <th scope="col">
         {% toggle_sort request "name" as new_sort %}
         <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Task</a>
+        {% if request.GET.sort == "name" %}↑{% elif request.GET.sort == "-name" %}↓{% endif %}
       </th>
       <th scope="col">
         {% toggle_sort request "task_type" as new_sort %}
         <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Type</a>
+        {% if request.GET.sort == "task_type" %}↑{% elif request.GET.sort == "-task_type" %}↓{% endif %}
       </th>
       <th scope="col">
         {% toggle_sort request "deadline" as new_sort %}
         <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Deadline</a>
+        {% if request.GET.sort == "deadline" %}↑{% elif request.GET.sort == "-deadline" %}↓{% endif %}
       </th>
       <th scope="col" class="text-center">
         {% toggle_sort request "priority" as new_sort %}
         <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Priority</a>
+        {% if request.GET.sort == "priority" %}↑{% elif request.GET.sort == "-priority" %}↓{% endif %}
       </th>
       <th scope="col" class="text-center">
         {% toggle_sort request "is_complete" as new_sort %}
         <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Status</a>
+        {% if request.GET.sort == "is_complete" %}↑{% elif request.GET.sort == "-is_complete" %}↓{% endif %}
       </th>
       <th scope="col" class="text-center">Actions</th>
     </tr>

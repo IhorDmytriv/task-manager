@@ -87,6 +87,11 @@ h1 {
   cursor: pointer;
 }
 
+.sort-link:hover {
+  text-decoration: underline;
+  color: #202627;
+}
+
 .table-custom th,
 .table-custom td {
     background-color: transparent !important;
