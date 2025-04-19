@@ -47,6 +47,20 @@ class TaskForm(forms.ModelForm):
         return deadline
 
 
+class TaskSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Name",
+                "class": "mr-2",
+            }
+        ),
+    )
+
+
 class WorkerCreationForm(UserCreationForm):
     class Meta:
         model = Worker

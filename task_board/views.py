@@ -14,13 +14,22 @@ from django.views.generic import (
     DeleteView
 )
 
-from task_board.forms import TaskForm, WorkerCreationForm, WorkerSearchForm
+from task_board.forms import (
+    TaskForm,
+    WorkerCreationForm,
+    WorkerSearchForm,
+    TaskSearchForm
+)
 from task_board.models import Task, Worker, TaskType, Position
 
 
 @login_required
 def index(request: HttpRequest) -> HttpResponse:
     tasks = Task.objects.select_related("task_type")
+
+    name = request.GET.get("name")
+    if name:
+        tasks = tasks.filter(name__icontains=name)
 
     current_year = datetime.now().year
 
@@ -38,6 +47,7 @@ def index(request: HttpRequest) -> HttpResponse:
         "is_paginated": page_obj.has_other_pages(),
         "paginator": paginator,
         "num_visits": num_visits + 1,
+        "search_form": TaskSearchForm(initial={"name": name}),
     }
     return render(request, "task_board/index.html", context=context)
 
