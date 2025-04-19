@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load sort_helpers %}
+{% load query_transform %}
 {% load custom_filters %}
 
 {% block title %}Task Manager{% endblock %}
@@ -17,11 +19,26 @@
 <table class="table text-white mb-0 table-custom">
   <thead>
     <tr>
-      <th scope="col">Task</th>
-      <th scope="col">Type</th>
-      <th scope="col">Deadline</th>
-      <th scope="col" class="text-center">Priority</th>
-      <th scope="col" class="text-center">Status</th>
+      <th scope="col">
+        {% toggle_sort request "name" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Task</a>
+      </th>
+      <th scope="col">
+        {% toggle_sort request "task_type" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Type</a>
+      </th>
+      <th scope="col">
+        {% toggle_sort request "deadline" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Deadline</a>
+      </th>
+      <th scope="col" class="text-center">
+        {% toggle_sort request "priority" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Priority</a>
+      </th>
+      <th scope="col" class="text-center">
+        {% toggle_sort request "is_complete" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Status</a>
+      </th>
       <th scope="col" class="text-center">Actions</th>
     </tr>
   </thead>

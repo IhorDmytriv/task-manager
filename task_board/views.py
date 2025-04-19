@@ -32,6 +32,22 @@ def index(request: HttpRequest) -> HttpResponse:
     if name:
         tasks = tasks.filter(name__icontains=name)
 
+    sort = request.GET.get("sort", "")
+    valid_sorts = [
+        "name",
+        "-name",
+        "task_type",
+        "-task_type",
+        "deadline",
+        "-deadline",
+        "priority",
+        "-priority",
+        "is_complete",
+        "-is_complete"
+    ]
+    if sort in valid_sorts:
+        tasks = tasks.order_by(sort)
+
     current_year = datetime.now().year
 
     paginator = Paginator(tasks, 6)
