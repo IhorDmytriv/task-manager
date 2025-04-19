@@ -15,5 +15,4 @@ def time_until(deadline: datetime) -> str:
         return f"Overdue by {-delta} {'day' if delta == -1 else 'days'}"
     elif delta == 0:
         return "Today"
-    else:
-        return f"{delta} {'day' if delta == 1 else 'days'} left"
+    return f"{delta} {'day' if delta == 1 else 'days'} left"

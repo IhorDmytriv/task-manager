@@ -27,7 +27,7 @@ from task_board.models import Task, Worker, TaskType, Position
 def index(request: HttpRequest) -> HttpResponse:
     tasks = Task.objects.select_related("task_type")
 
-    name = request.GET.get("name")
+    name = request.GET.get("name", "")
     if name:
         tasks = tasks.filter(name__icontains=name)
 
