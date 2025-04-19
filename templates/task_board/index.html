@@ -75,11 +75,11 @@
         <!-- Task Actions -->
         <td class="align-middle text-center">
           {% if task.is_complete %}
-            <a href="#" class="px-2" data-toggle="tooltip" title="Pending">
+            <a href="{% url 'task_board:toggle-task-status' pk=task.id %}" class="px-2" data-toggle="tooltip" title="Mark as pending">
               <i class="fas fa-times-circle fa-lg text-danger"></i>
             </a>
           {% else %}
-            <a href="#" class="px-2" data-toggle="tooltip" title="Completed">
+            <a href="{% url 'task_board:toggle-task-status' pk=task.id %}" class="px-2" data-toggle="tooltip" title="Mark as completed">
               <i class="fas fa-check-circle fa-lg text-success"></i>
             </a>
           {% endif %}

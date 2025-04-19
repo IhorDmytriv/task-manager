@@ -1,6 +1,7 @@
 from django.urls import path
 from task_board.views import (
     index,
+    toggle_task_status,
     TaskDetailView,
     TaskCreateView,
     TaskUpdateView,
@@ -31,6 +32,11 @@ urlpatterns = [
         "tasks/<int:pk>/delete",
         TaskDeleteView.as_view(),
         name="task-delete"
+    ),
+    path(
+        "tasks/<int:pk>/toggle-status/",
+        toggle_task_status,
+        name="toggle-task-status"
     ),
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path(

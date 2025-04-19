@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -51,6 +51,14 @@ def index(request: HttpRequest) -> HttpResponse:
         "search_form": TaskSearchForm(initial={"name": name}),
     }
     return render(request, "task_board/index.html", context=context)
+
+
+@login_required
+def toggle_task_status(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.is_complete = not task.is_complete
+    task.save()
+    return redirect(request.META.get("HTTP_REFERER", "task_board:index"))
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
