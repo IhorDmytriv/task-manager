@@ -45,7 +45,7 @@ class ModelTests(TestCase):
         task = Task.objects.create(
             task_type=self.task_type,
             name="Add sign-in with Google button",
-            priority="High",
+            priority=3,
         )
         self.assertEqual(
             str(task),
@@ -61,7 +61,7 @@ class ModelTests(TestCase):
     def test_task_priority_can_be_changed(self):
         task = Task.objects.create(
             task_type=self.task_type,
-            priority="Low",
+            priority=1,
         )
         self.assertEqual(task.get_priority_display(), "Low Priority")
 
