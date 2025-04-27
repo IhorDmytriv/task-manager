@@ -36,6 +36,7 @@ class PrivatePositionViewTests(TestCase):
 
         response = self.client.get(reverse("task_board:position-list") + "?name=developer")
 
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Python Developer")
         self.assertContains(response, "Java Developer")
         self.assertNotContains(response, "UX Designer")
@@ -43,6 +44,7 @@ class PrivatePositionViewTests(TestCase):
     def test_position_list_context_contains_search_form_with_initial_value(self):
         response = self.client.get(reverse("task_board:position-list") + "?name=test")
         form = response.context["search_form"]
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(form.initial["name"], "test")
 
     # Position Create View Tests

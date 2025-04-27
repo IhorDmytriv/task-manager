@@ -29,7 +29,7 @@ class PrivateTaskTypeViewTests(TestCase):
         )
         self.assertTemplateUsed(response, "task_board/task_type_list.html")
 
-    def test_filtered_task_list_displays_task_types_by_name(self):
+    def test_filtered_task_type_list_displays_by_name(self):
         TaskType.objects.create(name="Fix login bug")
         TaskType.objects.create(name="Refactor login")
         TaskType.objects.create(name="Improve UI")
@@ -40,7 +40,7 @@ class PrivateTaskTypeViewTests(TestCase):
         self.assertContains(response, "Refactor login")
         self.assertNotContains(response, "Improve UI")
 
-    def test_task_list_context_contains_search_form_with_initial_value(self):
+    def test_task_type_list_context_contains_search_form_with_initial_value(self):
         response = self.client.get(reverse("task_board:task-type-list") + "?name=test")
         form = response.context["search_form"]
         self.assertEqual(form.initial["name"], "test")
