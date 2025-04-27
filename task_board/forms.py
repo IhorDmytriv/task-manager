@@ -42,7 +42,7 @@ class TaskForm(forms.ModelForm):
 
     def clean_deadline(self):
         deadline = self.cleaned_data["deadline"]
-        if deadline < timezone.now().date():
+        if deadline and deadline < timezone.now().date():
             raise ValidationError("Deadline cannot be in the past.")
         return deadline
 
