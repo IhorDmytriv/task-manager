@@ -29,6 +29,7 @@ class TaskForm(forms.ModelForm):
             "description": forms.Textarea(
                 attrs={"rows": 4, "placeholder": "Task details..."}
             ),
+            "assignees": forms.CheckboxSelectMultiple(),
             "deadline": forms.DateInput(
                 attrs={"type": "date", "class": "form-control"}
             ),
