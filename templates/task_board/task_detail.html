@@ -126,6 +126,9 @@
         <!-- Worker name -->
         <th class="align- text-center">
           <a class="ms-2" href="{{ worker.get_absolute_url }}" title="Worker">{{ worker.first_name }} {{ worker.last_name }}</a>
+          {% if worker == user %}
+            <span class="text-muted">(you)</span>
+          {% endif %}
         </th>
 
         <!-- Worker username -->
