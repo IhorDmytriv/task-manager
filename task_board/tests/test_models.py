@@ -32,7 +32,7 @@ class ModelTests(TestCase):
         self.assertTrue(worker.check_password(password))
         self.assertEqual(
             str(worker),
-            f"{worker.first_name}, {worker.last_name}, ({worker.username})"
+            f"{worker.first_name} {worker.last_name}, ({worker.position})"
         )
 
     # TaskType Tests

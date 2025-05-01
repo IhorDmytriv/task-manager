@@ -8,4 +8,5 @@ exclude =
     **migrations
     venv
     task_board/tests
+    task_board/templatetags/custom_filters.py
     task_manager/settings.py

@@ -26,7 +26,7 @@ class AdminSiteTests(TestCase):
         """
         Test that worker`s position is in list_display on worker admin page.
         """
-        url = reverse('admin:task_board_worker_changelist')
+        url = reverse("admin:task_board_worker_changelist")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.position.name)
@@ -35,7 +35,7 @@ class AdminSiteTests(TestCase):
         """
         Test that worker`s position is on worker detail admin page.
         """
-        url = reverse('admin:task_board_worker_change', args=[self.worker.id])
+        url = reverse("admin:task_board_worker_change", args=[self.worker.id])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.position.name)
@@ -44,7 +44,7 @@ class AdminSiteTests(TestCase):
         """
         Test that worker`s position is on worker add admin page.
         """
-        url = reverse('admin:task_board_worker_add')
+        url = reverse("admin:task_board_worker_add")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.position.name)
@@ -69,10 +69,8 @@ class AdminSiteTests(TestCase):
             position=position_2
         )
 
-        url = (
-                reverse('admin:task_board_worker_changelist') + "?"
-                + urlencode({'position__id__exact': position_1.id})
-        )
+        url = reverse("admin:task_board_worker_changelist") + "?" + urlencode({"position__id__exact": position_1.id})
+
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, worker_1.username)
