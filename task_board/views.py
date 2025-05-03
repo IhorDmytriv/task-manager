@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpRequest, HttpResponse
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.generic import (
     ListView,
@@ -125,8 +125,10 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
-    success_url = reverse_lazy("task_board:index")
     template_name = "task_board/task_form.html"
+
+    def get_success_url(self):
+        return reverse("task_board:task-detail", kwargs={"pk": self.object.id})
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):

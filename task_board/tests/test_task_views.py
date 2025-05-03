@@ -167,7 +167,7 @@ class PrivateTaskViewTests(TestCase):
         self.assertEqual(self.task_1.description, form_data["description"])
         self.assertEqual(self.task_1.task_type.id, form_data["task_type"])
         self.assertEqual(self.task_1.priority, form_data["priority"])
-        self.assertRedirects(response, reverse("task_board:index"))
+        self.assertRedirects(response, reverse("task_board:task-detail", args=[self.task_1.id]))
 
     # Test Task Delete View
     def test_delete_task(self):
