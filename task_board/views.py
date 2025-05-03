@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
@@ -73,6 +74,14 @@ def index(request: HttpRequest) -> HttpResponse:
 @login_required
 def toggle_task_status(request, pk):
     task = get_object_or_404(Task, pk=pk)
+
+    if request.user not in task.assignees.all():
+        messages.warning(
+            request,
+            "You do not have access to change the status of this task."
+        )
+        return redirect("task_board:index")
+
     task.is_complete = not task.is_complete
     task.save()
 
