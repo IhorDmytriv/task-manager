@@ -124,11 +124,11 @@
 <div class="d-flex position-relative justify-content-center align-items-center">
   <h2 class="text-center w-100">Task assignees:</h2>
   {% if user in task.assignees.all %}
-    <a href="{% url 'task_board:add-user-to-task-assignees' pk=task.id %}" class="btn btn-danger position-absolute" style="right: 0;" title="Remove me from this task">
+    <a href="{% url 'task_board:toggle-task-assignee' pk=task.id %}" class="btn btn-danger position-absolute" style="right: 0;" title="Remove me from this task">
       Remove me from this task
     </a>
   {% else %}
-    <a href="{% url 'task_board:add-user-to-task-assignees' pk=task.id %}" class="btn btn-primary position-absolute" style="right: 0;" title="Add me to this task">
+    <a href="{% url 'task_board:toggle-task-assignee' pk=task.id %}" class="btn btn-primary position-absolute" style="right: 0;" title="Add me to this task">
       Add me to this task
     </a>
   {% endif %}
@@ -141,7 +141,6 @@
       <th scope="col" class="text-center">Username</th>
       <th scope="col" class="text-center">Email</th>
       <th scope="col" class="text-center">Position</th>
-      <th scope="col" class="text-center">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -165,15 +164,6 @@
         <!-- Worker Position -->
         <td class="align-middle text-center">{{ worker.position }}</td>
 
-        <!-- Worker Actions -->
-        <td class="align-middle text-center">
-          <a href="#" class="px-2" data-toggle="tooltip" title="Edit">
-            <i class="fas fa-pen text-warning"></i>
-          </a>
-          <a href="#" class="px-2" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-trash-alt fa-lg text-danger"></i>
-          </a>
-        </td>
       </tr>
     {% empty %}
       <tr>

@@ -2,7 +2,7 @@ from django.urls import path
 from task_board.views import (
     index,
     toggle_task_status,
-    add_user_to_task_assignees,
+    toggle_task_assignee,
     TaskDetailView,
     TaskCreateView,
     TaskUpdateView,
@@ -40,9 +40,9 @@ urlpatterns = [
         name="toggle-task-status"
     ),
     path(
-        "tasks/<int:pk>/add-user-to-task-assignees/",
-        add_user_to_task_assignees,
-        name="add-user-to-task-assignees"
+        "tasks/<int:pk>/toggle-task-assignee/",
+        toggle_task_assignee,
+        name="toggle-task-assignee"
     ),
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path(

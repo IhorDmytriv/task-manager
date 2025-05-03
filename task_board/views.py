@@ -95,7 +95,7 @@ def toggle_task_status(request, pk):
 
 
 @login_required
-def add_user_to_task_assignees(request, pk):
+def toggle_task_assignee(request, pk):
     task = get_object_or_404(Task, pk=pk)
     user = request.user
 
