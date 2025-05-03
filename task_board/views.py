@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.generic import (
     ListView,
     DetailView,
@@ -74,7 +75,14 @@ def toggle_task_status(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.is_complete = not task.is_complete
     task.save()
-    return redirect(request.META.get("HTTP_REFERER", "task_board:index"))
+
+    next_url = request.GET.get("next")
+    if next_url and url_has_allowed_host_and_scheme(
+            next_url,
+            allowed_hosts={request.get_host()}
+    ):
+        return redirect(next_url)
+    return redirect("task_board:index")
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):

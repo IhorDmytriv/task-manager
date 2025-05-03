@@ -60,11 +60,20 @@
                   Status
                 </div>
                 {% if task.is_complete %}
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">Complete!</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800 text-success">Complete!</div>
                 {% else %}
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">Pending...</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800 text-warning">Pending...</div>
                 {% endif %}
               </div>
+              {% if task.is_complete %}
+                <a href="{% url 'task_board:toggle-task-status' pk=task.id %}?next={{ request.path }}" data-toggle="tooltip" title="Mark as pending">
+                  <i class="fas fa-times-circle fa-3x text-danger"></i>
+                </a>
+              {% else %}
+                <a href="{% url 'task_board:toggle-task-status' pk=task.id %}?next={{ request.path }}" data-toggle="tooltip" title="Mark as completed">
+                  <i class="fas fa-check-circle fa-3x text-success"></i>
+                </a>
+              {% endif %}
             </div>
           </div>
         </div>
