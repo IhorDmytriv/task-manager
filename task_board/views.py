@@ -94,6 +94,18 @@ def toggle_task_status(request, pk):
     return redirect("task_board:index")
 
 
+@login_required
+def add_user_to_task_assignees(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    user = request.user
+
+    if user not in task.assignees.all():
+        task.assignees.add(user)
+    else:
+        task.assignees.remove(user)
+    return redirect("task_board:task-detail", pk=pk)
+
+
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     queryset = (

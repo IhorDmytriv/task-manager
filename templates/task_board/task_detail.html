@@ -120,6 +120,20 @@
   </div>
 </div>
 <hr class="mt-0">
+
+<div class="d-flex position-relative justify-content-center align-items-center">
+  <h2 class="text-center w-100">Task assignees:</h2>
+  {% if user in task.assignees.all %}
+    <a href="{% url 'task_board:add-user-to-task-assignees' pk=task.id %}" class="btn btn-danger position-absolute" style="right: 0;" title="Remove me from this task">
+      Remove me from this task
+    </a>
+  {% else %}
+    <a href="{% url 'task_board:add-user-to-task-assignees' pk=task.id %}" class="btn btn-primary position-absolute" style="right: 0;" title="Add me to this task">
+      Add me to this task
+    </a>
+  {% endif %}
+</div>
+
 <table class="table text-white mb-0 table-custom">
   <thead>
     <tr>
