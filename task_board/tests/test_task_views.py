@@ -71,14 +71,26 @@ class PrivateTaskViewTests(TestCase):
         self.assertEqual(form.initial["name"], "test")
 
     # Task toggle status View Test
-    def test_toggle_task_status(self):
+    def test_toggle_task_status_with_assignees_user(self):
         self.task_1.is_complete = False
+        self.task_1.assignees.set([self.user.id])
         response = self.client.post(reverse("task_board:toggle-task-status", args=[self.task_1.id]))
 
         self.task_1.refresh_from_db()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.task_1.is_complete, True)
         self.assertRedirects(response, reverse("task_board:index"))
+
+    def test_toggle_task_status_without_assignees_user(self):
+        self.task_1.is_complete = False
+        self.task_1.assignees.set([])
+        response = self.client.post(reverse("task_board:toggle-task-status", args=[self.task_1.id]))
+
+        self.task_1.refresh_from_db()
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.task_1.is_complete, False)
+        self.assertRedirects(response, reverse("task_board:index"))
+
 
     # Task Detail View Tests
     def test_task_detail_displays_correct_task(self):
