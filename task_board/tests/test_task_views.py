@@ -70,7 +70,7 @@ class PrivateTaskViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(form.initial["name"], "test")
 
-    # Task toggle status View Test
+    # Task toggle status View Tests
     def test_toggle_task_status_with_assignees_user(self):
         self.task_1.is_complete = False
         self.task_1.assignees.set([self.user.id])
@@ -90,6 +90,26 @@ class PrivateTaskViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.task_1.is_complete, False)
         self.assertRedirects(response, reverse("task_board:index"))
+
+    # Task toggle assignee View Tests
+    def test_toggle_task_assignee_add_user(self):
+        response = self.client.post(reverse("task_board:toggle-task-assignee", args=[self.task_1.id]))
+        self.task_1.refresh_from_db()
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(self.user, self.task_1.assignees.all())
+        self.assertRedirects(response, reverse("task_board:task-detail", args=[self.task_1.id]))
+
+
+    def test_toggle_task_assignee_remove_user(self):
+        self.task_1.assignees.set([self.user.id])
+
+        response = self.client.post(reverse("task_board:toggle-task-assignee", args=[self.task_1.id]))
+        self.task_1.refresh_from_db()
+
+        self.assertEqual(response.status_code, 302)
+        self.assertNotIn(self.user, self.task_1.assignees.all())
+        self.assertRedirects(response, reverse("task_board:task-detail", args=[self.task_1.id]))
 
 
     # Task Detail View Tests
