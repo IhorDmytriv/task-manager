@@ -29,11 +29,11 @@
                   <form action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                      <label for="username">Username</label>
+                      <label for="username">Username (TEST:"test_user")</label>
                       <input type="text" class="form-control" id="username" name="username">
                     </div>
                     <div class="form-group mb-5">
-                      <label for="Password">Password</label>
+                      <label for="Password">Password (TEST:"test_password")</label>
                       <input type="password" class="form-control" id="Password" name="password">
                     </div>
                     <button type="submit" class="btn btn-theme">Login</button>
@@ -41,7 +41,7 @@
                     <input type="hidden" name="next" value="{{ next }}" />
                   </form>
                   <hr>
-                  <p class="text-muted text-center mt-3 mb-0">Don't have an account? <a href="" class="text-primary ml-1">Register</a></p>
+                  <p class="text-muted text-center mt-3 mb-0">Don't have an account? <a href="{% url 'task_board:worker-create' %}" class="text-primary ml-1">Register</a></p>
                 </div>
               </div>
 

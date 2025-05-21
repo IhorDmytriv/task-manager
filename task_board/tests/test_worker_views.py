@@ -135,6 +135,6 @@ class PublicWorkerViewTests(TestCase):
         response = self.client.get(reverse("task_board:worker-detail", args=[self.worker.id]))
         self.assertNotEqual(response.status_code, 200)
 
-    def test_login_required_worker_create(self):
+    def test_login_not_required_worker_create(self):
         response = self.client.get(reverse("task_board:worker-create"))
-        self.assertNotEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)

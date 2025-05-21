@@ -189,7 +189,7 @@ class WorkerDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-class WorkerCreateView(LoginRequiredMixin, CreateView):
+class WorkerCreateView(CreateView):
     model = Worker
     form_class = WorkerCreationForm
     success_url = reverse_lazy("task_board:worker-list")
