@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Task {{ object|yesno:"Update,Create" }}{% endblock %}
+
+{% block content %}
+  <!-- Table name -->
+  <div class="d-flex position-relative justify-content-center align-items-center mb-3">
+  {% if object %}
+    <a href="{% url 'task_board:task-detail' pk=task.id %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task detail">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+  {% else %}
+    <a href="{% url 'task_board:index' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to task list">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+  {% endif %}
+    <h2 class="text-center w-100">Task {{ object|yesno:"Update,Create" }}</h2>
+  </div>
+  {% include "includes/crispy_task_form.html" %}
+{% endblock %}

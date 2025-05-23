@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}{{ worker.first_name }} {{ worker.last_name }}{% endblock %}
+
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/styles_worker_detail.css' %}">
+{% endblock %}
+{% block content %}
+  <!-- Table name -->
+  <div class="d-flex position-relative justify-content-center align-items-center">
+    <a href="{% url 'task_board:worker-list' %}" class="btn-circle position-absolute" style="left: 0;" data-toggle="tooltip" title="Back to worker list">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <h2 class="text-center w-100">Worker Detail Info</h2>
+  </div>
+  <!-- Profile -->
+  <div class="card-profile bg-dark text-white mt-4 pb-4 pt-2">
+    <div class="card-body pb-0 ">
+      <div class="row align-items-center">
+        <div class="col-md-3">
+          <div class="text-center border-end">
+            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid avatar-xxl rounded-circle" alt="">
+            <h4 class="text-primary font-size-20 mt-3 mb-2">{{ worker.first_name }} {{ worker.last_name }}</h4>
+            <h5 class="text-muted font-size-13 mb-0">{{ worker.position }}</h5>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="ms-3">
+            <div>
+              <h4 class="card-title mb-2">Biography</h4>
+              <p class="mb-0">Hi I'm {{ worker.first_name }} and I work as a {{ worker.position }}.</p>
+            </div>
+            <div class="row my-4">
+              <div class="col-md-12">
+                <div class="mt-3 pt-1">
+                  <p class="mb-0"><i class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i> 123 456 789</p>
+                  <p class="mb-0 mt-2"><i class="mdi mdi-email font-size-15 align-middle pe-2 text-primary"></i> {{ worker.email }}</p>
+                  <p class="mb-0 mt-2"><i class="mdi mdi-google-maps font-size-15 align-middle pe-2 text-primary"></i> France (Paris)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="mt-0">
+
+  {% include "includes/task_table.html" %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+.avatar-xxl {
+    height: 10rem;
+    width: 10rem;
+}
+
+.card-profile {
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+
+.pb-0 {
+    padding-bottom: 0!important;
+}
+
+.font-size-16 {
+    font-size: 16px!important;
+}
+.avatar-title {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #038edc;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.bg-soft-primary {
+    background-color: rgba(3,142,220,.15)!important;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}

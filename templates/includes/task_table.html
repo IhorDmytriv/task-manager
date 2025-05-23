@@ -1,0 +1,110 @@
+{% load custom_filters %}
+{% load sort_helpers %}
+{% load query_transform %}
+
+<table class="table text-white mb-0 table-custom">
+  <thead>
+    <tr>
+      <th scope="col">
+        {% toggle_sort request "name" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Task</a>
+        {% if request.GET.sort == "name" %}↑{% elif request.GET.sort == "-name" %}↓{% endif %}
+      </th>
+      <th scope="col">
+        {% toggle_sort request "task_type" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Type</a>
+        {% if request.GET.sort == "task_type" %}↑{% elif request.GET.sort == "-task_type" %}↓{% endif %}
+      </th>
+      <th scope="col">
+        {% toggle_sort request "deadline" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Deadline</a>
+        {% if request.GET.sort == "deadline" %}↑{% elif request.GET.sort == "-deadline" %}↓{% endif %}
+      </th>
+      <th scope="col" class="text-center">
+        {% toggle_sort request "priority" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Priority</a>
+        {% if request.GET.sort == "priority" %}↑{% elif request.GET.sort == "-priority" %}↓{% endif %}
+      </th>
+      <th scope="col" class="text-center">
+        {% toggle_sort request "is_complete" as new_sort %}
+        <a href="?{% query_transform request sort=new_sort %}" class="sort-link">Status</a>
+        {% if request.GET.sort == "is_complete" %}↑{% elif request.GET.sort == "-is_complete" %}↓{% endif %}
+      </th>
+      <th scope="col" class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in page_obj %}
+      <tr class="font-weight-normal">
+
+        <!-- Task name -->
+        <td class="align-middle">
+          <a href="{{ task.get_absolute_url }}" title="Task">{{ task.name }}</a>
+        </td>
+
+        <!-- Task Type -->
+        <td class="align-middle">{{ task.task_type }}</td>
+
+        <!-- Task Deadline -->
+        <td class="align-middle">
+          {% if task.deadline %}
+            {{ task.deadline }}
+            <br>
+            {% if not task.is_complete %}
+              <span class="text-muted">({{ task.deadline|time_until }})</span>
+            {% endif %}
+          {% else %}
+            No deadline
+          {% endif %}
+        </td>
+
+        <!-- Task Priority -->
+        <td class="align-middle text-center">
+          <span class="mb-0">
+            {% if task.priority == 1 %}
+              <i class="fas fa-circle text-success priority-icon"></i>
+            {% elif task.priority == 2 %}
+              <i class="fas fa-circle text-warning priority-icon"></i>
+            {% elif task.priority == 3 %}
+              <i class="fas fa-circle text-danger priority-icon"></i>
+            {% endif %}
+          </span>
+        </td>
+
+        <!-- Task Status -->
+        <td class="align-middle text-center">
+          {% if task.is_complete %}
+            <span class="text-success font-weight-bold">Completed!</span>
+          {% else %}
+            <span class="text-warning font-weight-bold">Pending...</span>
+          {% endif %}
+        </td>
+
+        <!-- Task Actions -->
+        <td class="align-middle text-right">
+          {% if user in task.assignees.all %}
+            {% if task.is_complete %}
+              <a href="{% url 'task_board:toggle-task-status' pk=task.id %}" class="px-2" data-toggle="tooltip" title="Mark as pending">
+                <i class="fas fa-times-circle fa-lg text-danger"></i>
+              </a>
+            {% else %}
+              <a href="{% url 'task_board:toggle-task-status' pk=task.id %}" class="px-2" data-toggle="tooltip" title="Mark as completed">
+                <i class="fas fa-check-circle fa-lg text-success"></i>
+              </a>
+            {% endif %}
+          {% endif %}
+          <a href="{% url 'task_board:task-update' pk=task.id %}" class="px-2" data-toggle="tooltip" title="Edit">
+            <i class="fas fa-pen text-warning"></i>
+          </a>
+          <a href="{% url 'task_board:task-delete' pk=task.id %}" class="px-2" data-toggle="tooltip" title="Remove">
+            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+          </a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6" class="text-center text-muted display-4">No tasks available yet.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

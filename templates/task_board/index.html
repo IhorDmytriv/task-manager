@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Manager{% endblock %}
+
+{% block content %}
+<!-- Table name -->
+<div class="d-flex position-relative justify-content-center align-items-center">
+  <h2 class="text-center w-100">Task List</h2>
+  <a href="{% url 'task_board:task-create' %}" class="btn-circle position-absolute" style="right: 0;" data-toggle="tooltip" title="Create New Task">
+    <i class="fas fa-plus"></i>
+  </a>
+</div>
+
+{% include "includes/search_form.html" %}
+
+{% include "includes/task_table.html" %}
+
+{% endblock %}

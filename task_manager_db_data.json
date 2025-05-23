@@ -1,0 +1,660 @@
+[
+  {
+    "model": "task_board.Position",
+    "fields": {
+      "name": "Python Developer"
+    }
+  },
+  {
+    "model": "task_board.Position",
+    "fields": {
+      "name": "Frontend Developer"
+    }
+  },
+  {
+    "model": "task_board.Position",
+    "fields": {
+      "name": "Project Manager"
+    }
+  },
+  {
+    "model": "task_board.Position",
+    "fields": {
+      "name": "UI/UX Designer"
+    }
+  },
+  {
+    "model": "task_board.Position",
+    "fields": {
+      "name": "DevOps Engineer"
+    }
+  },
+  {
+    "model": "task_board.Position",
+    "fields": {
+      "name": "Quality Assurance"
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "alice_johnson",
+      "first_name": "Alice",
+      "last_name": "Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "password123",
+      "position": 1
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "bob_martinez",
+      "first_name": "Bob",
+      "last_name": "Martinez",
+      "email": "bob.martinez@example.com",
+      "password": "password123",
+      "position": 2
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "charlie_clark",
+      "first_name": "Charlie",
+      "last_name": "Clark",
+      "email": "charlie.clark@example.com",
+      "password": "password123",
+      "position": 3
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "diana_wright",
+      "first_name": "Diana",
+      "last_name": "Wright",
+      "email": "diana.wright@example.com",
+      "password": "password123",
+      "position": 4
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "edward_harris",
+      "first_name": "Edward",
+      "last_name": "Harris",
+      "email": "edward.harris@example.com",
+      "password": "password123",
+      "position": 5
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "fiona_king",
+      "first_name": "Fiona",
+      "last_name": "King",
+      "email": "fiona.king@example.com",
+      "password": "password123",
+      "position": 6
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "george_lee",
+      "first_name": "George",
+      "last_name": "Lee",
+      "email": "george.lee@example.com",
+      "password": "password123",
+      "position": 1
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "hannah_moore",
+      "first_name": "Hannah",
+      "last_name": "Moore",
+      "email": "hannah.moore@example.com",
+      "password": "password123",
+      "position": 2
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "ian_taylor",
+      "first_name": "Ian",
+      "last_name": "Taylor",
+      "email": "ian.taylor@example.com",
+      "password": "password123",
+      "position": 3
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "julia_thomas",
+      "first_name": "Julia",
+      "last_name": "Thomas",
+      "email": "julia.thomas@example.com",
+      "password": "password123",
+      "position": 4
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "kevin_jackson",
+      "first_name": "Kevin",
+      "last_name": "Jackson",
+      "email": "kevin.jackson@example.com",
+      "password": "password123",
+      "position": 5
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "linda_white",
+      "first_name": "Linda",
+      "last_name": "White",
+      "email": "linda.white@example.com",
+      "password": "password123",
+      "position": 6
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "mike_hall",
+      "first_name": "Mike",
+      "last_name": "Hall",
+      "email": "mike.hall@example.com",
+      "password": "password123",
+      "position": 1
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "nina_rivera",
+      "first_name": "Nina",
+      "last_name": "Rivera",
+      "email": "nina.rivera@example.com",
+      "password": "password123",
+      "position": 2
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "oliver_gonzalez",
+      "first_name": "Oliver",
+      "last_name": "Gonzalez",
+      "email": "oliver.gonzalez@example.com",
+      "password": "password123",
+      "position": 3
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "paula_baker",
+      "first_name": "Paula",
+      "last_name": "Baker",
+      "email": "paula.baker@example.com",
+      "password": "password123",
+      "position": 4
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "quinn_adams",
+      "first_name": "Quinn",
+      "last_name": "Adams",
+      "email": "quinn.adams@example.com",
+      "password": "password123",
+      "position": 5
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "ryan_evans",
+      "first_name": "Ryan",
+      "last_name": "Evans",
+      "email": "ryan.evans@example.com",
+      "password": "password123",
+      "position": 6
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "john_doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "position": 1
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "jane_smith",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "email": "jane.smith@example.com",
+      "password": "password123",
+      "position": 2
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "paul_brown",
+      "first_name": "Paul",
+      "last_name": "Brown",
+      "email": "paul.brown@example.com",
+      "password": "password123",
+      "position": 3
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "lucy_adams",
+      "first_name": "Lucy",
+      "last_name": "Adams",
+      "email": "lucy.adams@example.com",
+      "password": "password123",
+      "position": 4
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "michael_james",
+      "first_name": "Michael",
+      "last_name": "James",
+      "email": "michael.james@example.com",
+      "password": "password123",
+      "position": 5
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "emma_wilson",
+      "first_name": "Emma",
+      "last_name": "Wilson",
+      "email": "emma.wilson@example.com",
+      "password": "password123",
+      "position": 6
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "luke_scott",
+      "first_name": "Luke",
+      "last_name": "Scott",
+      "email": "luke.scott@example.com",
+      "password": "password123",
+      "position": 1
+    }
+  },
+  {
+    "model": "task_board.Worker",
+    "fields": {
+      "username": "eva_lee",
+      "first_name": "Eva",
+      "last_name": "Lee",
+      "email": "eva.lee@example.com",
+      "password": "password123",
+      "position": 2
+    }
+  },
+  {
+    "model": "task_board.TaskType",
+    "fields": {
+      "name": "Bug Fix"
+    }
+  },
+  {
+    "model": "task_board.TaskType",
+    "fields": {
+      "name": "Feature Request"
+    }
+  },
+  {
+    "model": "task_board.TaskType",
+    "fields": {
+      "name": "Documentation"
+    }
+  },
+  {
+    "model": "task_board.TaskType",
+    "fields": {
+      "name": "Code Refactor"
+    }
+  },
+  {
+    "model": "task_board.TaskType",
+    "fields": {
+      "name": "Testing"
+    }
+  },
+  {
+    "model": "task_board.TaskType",
+    "fields": {
+      "name": "UI/UX Design"
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 1,
+      "name": "Fix login issues",
+      "description": "Resolve the issues where users are unable to log in.",
+      "deadline": "2025-04-10",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [1, 2, 3]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 2,
+      "name": "Develop new landing page",
+      "description": "Create a new landing page to improve user engagement.",
+      "deadline": "2025-04-15",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [2, 3, 4, 5]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 3,
+      "name": "Update user documentation",
+      "description": "Revise the user documentation to include new features.",
+      "deadline": "2025-04-12",
+      "is_complete": true,
+      "priority": 1,
+      "assignees": [1, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 4,
+      "name": "Refactor database schema",
+      "description": "Refactor the database schema for better performance.",
+      "deadline": "2025-04-20",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [3, 4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 5,
+      "name": "Conduct performance testing",
+      "description": "Perform performance testing on the application to identify bottlenecks.",
+      "deadline": "2025-04-22",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [1, 2, 3, 4, 5]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 6,
+      "name": "Design new logo",
+      "description": "Create a new logo for the application to refresh its branding.",
+      "deadline": "2025-04-18",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 1,
+      "name": "Fix API response time",
+      "description": "Optimize the API to reduce response time.",
+      "deadline": "2025-04-25",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [1, 2, 3, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 2,
+      "name": "Implement user feedback system",
+      "description": "Create a system for users to provide feedback on the application.",
+      "deadline": "2025-04-30",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [2, 3, 4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 3,
+      "name": "Create marketing materials",
+      "description": "Develop marketing materials for the upcoming product launch.",
+      "deadline": "2025-05-05",
+      "is_complete": false,
+      "priority": 1,
+      "assignees": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 4,
+      "name": "Refactor front-end code",
+      "description": "Refactor the front-end codebase to improve maintainability.",
+      "deadline": "2025-05-10",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [3, 4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 5,
+      "name": "Conduct security audit",
+      "description": "Perform a security audit of the application to identify vulnerabilities.",
+      "deadline": "2025-05-15",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [1, 2, 3, 4, 5]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 6,
+      "name": "Create onboarding tutorial",
+      "description": "Develop an onboarding tutorial for new users.",
+      "deadline": "2025-05-20",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [2, 3, 4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 1,
+      "name": "Fix mobile responsiveness issues",
+      "description": "Resolve issues with mobile responsiveness on various devices.",
+      "deadline": "2025-05-25",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 2,
+      "name": "Implement analytics tracking",
+      "description": "Set up analytics tracking to monitor user behavior.",
+      "deadline": "2025-05-30",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [3, 4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 3,
+      "name": "Update privacy policy",
+      "description": "Revise the privacy policy to comply with new regulations.",
+      "deadline": "2025-06-01",
+      "is_complete": false,
+      "priority": 1,
+      "assignees": [1, 2, 3]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 4,
+      "name": "Refactor CSS styles",
+      "description": "Refactor the CSS styles for better organization and performance.",
+      "deadline": "2025-06-05",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [2, 3, 4, 5]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 5,
+      "name": "Conduct user interviews",
+      "description": "Conduct interviews with users to gather feedback on the application.",
+      "deadline": "2025-06-10",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [1, 2, 3, 4, 5]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 6,
+      "name": "Design new feature mockups",
+      "description": "Create mockups for new features to be implemented in the next release.",
+      "deadline": "2025-06-15",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [3, 4, 5, 6]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 1,
+      "name": "Fix authentication issue",
+      "description": "Fix the issue where users cannot log in using their credentials.",
+      "deadline": "2025-03-10",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [1, 2]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 2,
+      "name": "Add Dark Mode",
+      "description": "Implement a dark mode for the application.",
+      "deadline": "2025-03-15",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [1, 3]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 3,
+      "name": "Update API Docs",
+      "description": "Update the API documentation to reflect the latest changes.",
+      "deadline": "2025-03-12",
+      "is_complete": true,
+      "priority": 1,
+      "assignees": [2]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 4,
+      "name": "Refactor User Model",
+      "description": "Refactor the User model to make it more efficient.",
+      "deadline": "2025-03-20",
+      "is_complete": false,
+      "priority": 1,
+      "assignees": [4, 5]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 5,
+      "name": "End-to-End Testing",
+      "description": "Perform end-to-end testing for the new features implemented in the app.",
+      "deadline": "2025-03-22",
+      "is_complete": false,
+      "priority": 2,
+      "assignees": [6, 7]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 6,
+      "name": "Redesign Dashboard",
+      "description": "Redesign the user dashboard for a better user experience.",
+      "deadline": "2025-03-18",
+      "is_complete": false,
+      "priority": 1,
+      "assignees": [4, 8]
+    }
+  },
+  {
+    "model": "task_board.Task",
+    "fields": {
+      "task_type": 2,
+      "name": "Add Multi-language Support",
+      "description": "Implement multi-language support for the application.",
+      "deadline": "2025-04-01",
+      "is_complete": false,
+      "priority": 3,
+      "assignees": [5, 8]
+    }
+  }
+]
