@@ -98,7 +98,7 @@ python manage.py test
 
 ---
 
-## 👩‍💼 Author
+## 👨‍💼 Author
 
 * Ihor Dmytriv
 * Built during a Django course to practice backend web development
